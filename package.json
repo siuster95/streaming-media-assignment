@@ -1,0 +1,30 @@
+{
+  "name": "streaming-media-assignment",
+  "version": "1.0.0",
+  "engines": {
+    "node": "8.4.0",
+    "npm": "5.3.0"
+  },
+  "description": "streaming media homework assignment",
+  "main": "./src/server.js",
+  "scripts": {
+    "start": "node ./src/server.js",
+    "pretest": "eslint ./src --fix",
+    "test": "echo \"Tests complete\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IGM-Real-Time-at-RIT/streaming-media-assignment.git"
+  },
+  "author": "Johnny Siu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/IGM-Real-Time-at-RIT/streaming-media-assignment/issues"
+  },
+  "homepage": "https://github.com/IGM-Real-Time-at-RIT/streaming-media-assignment#readme",
+  "devDependencies": {
+    "eslint": "^4.6.1",
+    "eslint-config-airbnb": "^15.1.0",
+    "eslint-plugin-import": "^2.7.0"
+  }
+}
