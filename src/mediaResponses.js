@@ -20,7 +20,6 @@ const headerAndstream = (request, response, objectin, file, mediain) => {
   // end bytes and sending this back to the browser
 
   const stream = fs.createReadStream(file, { start, end });
-  console.log('stream');
   stream.on('open', () => {
     stream.pipe(response);
   });
@@ -36,13 +35,12 @@ const headerAndstream = (request, response, objectin, file, mediain) => {
 const getInfofromStats = (request, response, statsin, filein, mediaType) => {
   // get the byte range from the header, which is always sent to ask for frames to add to buffers 
   let range = request.headers.range;
-  console.dir(request.headers.range);
   if (!range) {
     range = 'bytes=0-';
   }
   // convert that range into a beginning and end number from the  string
   const position = range.replace(/bytes=/, '').split('-');
-  console.dir(position);
+
   let start = parseInt(position[0], 10);
 
   const total = statsin.size;
@@ -52,7 +50,7 @@ const getInfofromStats = (request, response, statsin, filein, mediaType) => {
   if (start > end) {
     start = end - 1;
   }
-  console.log('step3');
+
   const chunksize = (end - start) + 1;
   const objectout = {
     start,
@@ -64,9 +62,9 @@ const getInfofromStats = (request, response, statsin, filein, mediaType) => {
 };
 
 
-const getParty = (request, response, link, mediaType) => {
+const getStream = (request, response, link, mediaType) => {
   const file = path.resolve(__dirname, link);
-  console.dir(file);
+
   // creates a file object based on directory and path from directory to file'
   // using the file object, load in the file asynchronously and call a function with err and stats 
   fs.stat(file, (err, stats) => {
@@ -77,12 +75,11 @@ const getParty = (request, response, link, mediaType) => {
       }
       return response.end(err);
     }
-    console.log('step1');
-    console.dir(stats);
+
     return getInfofromStats(request, response, stats, file, mediaType);
   });
 };
 
 
-module.exports.getParty = getParty;
+module.exports.getStream = getStream;
 
