@@ -17,13 +17,13 @@ const onRequest = (request, response) => {
     case '/page3':
       htmlHandler.getPage3(request, response);
       break;
-    case '/party':
+    case '/party.mp4':
       mediaHandler.getStream(request, response, '../client/party.mp4', 'video/mp4');
       break;
-    case '/bling':
+    case '/bling.mp3':
       mediaHandler.getStream(request, response, '../client/bling.mp3', 'audio/mpeg');
       break;
-    case '/bird':
+    case '/bird.mp4':
       mediaHandler.getStream(request, response, '../client/bird.mp4', 'video/mp4');
       break;
     default:
